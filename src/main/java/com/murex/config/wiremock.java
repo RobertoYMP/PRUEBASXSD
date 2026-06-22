@@ -20,6 +20,12 @@ public class wiremock {
                 )
 
         );
+        //Si en dado caso da 400 en lugar de un 200
+        wireMockServer.stubFor(any(anyUrl()).atPriority(10).willReturn(aResponse()
+                                        .withStatus(400)
+                                        .withHeader("Content-Type", "PrubaXSD")
+                        )
+        );
 
         return wireMockServer;
     }
